@@ -1,44 +1,44 @@
 #!/bin/bash
 
-# Script pour créer et configurer le GitHub Project pour les modules PrestaShop
-# Ce script nécessite l'authentification GitHub CLI (gh)
+# Script to create and configure the GitHub Project for PrestaShop modules
+# This script requires GitHub CLI (gh) authentication
 
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONFIG_FILE="$SCRIPT_DIR/../config/project-config.json"
 
-# Couleurs pour l'affichage
+# Colors for display
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-echo -e "${GREEN}=== Setup GitHub Project pour PrestaShop Modules ===${NC}\n"
+echo -e "${GREEN}=== Setup GitHub Project for PrestaShop Modules ===${NC}\n"
 
-# Vérifier si gh est installé
+# Check if gh is installed
 if ! command -v gh &> /dev/null; then
-    echo -e "${RED}Erreur: GitHub CLI (gh) n'est pas installé${NC}"
-    echo "Installez-le depuis: https://cli.github.com/"
+    echo -e "${RED}Error: GitHub CLI (gh) is not installed${NC}"
+    echo "Install it from: https://cli.github.com/"
     exit 1
 fi
 
-# Vérifier si jq est installé
+# Check if jq is installed
 if ! command -v jq &> /dev/null; then
-    echo -e "${RED}Erreur: jq n'est pas installé${NC}"
-    echo "Installez-le avec: sudo apt-get install jq (Ubuntu/Debian) ou brew install jq (macOS)"
+    echo -e "${RED}Error: jq is not installed${NC}"
+    echo "Install it with: sudo apt-get install jq (Ubuntu/Debian) or brew install jq (macOS)"
     exit 1
 fi
 
-# Vérifier l'authentification
+# Check authentication
 if ! gh auth status &> /dev/null; then
-    echo -e "${YELLOW}Vous devez vous authentifier avec GitHub CLI${NC}"
+    echo -e "${YELLOW}You must authenticate with GitHub CLI${NC}"
     gh auth login
 fi
 
-# Lire la configuration
+# Read configuration
 if [ ! -f "$CONFIG_FILE" ]; then
-    echo -e "${RED}Erreur: Fichier de configuration non trouvé: $CONFIG_FILE${NC}"
+    echo -e "${RED}Error: Configuration file not found: $CONFIG_FILE${NC}"
     exit 1
 fi
 
@@ -46,42 +46,42 @@ PROJECT_NAME=$(jq -r '.project.name' "$CONFIG_FILE")
 PROJECT_DESC=$(jq -r '.project.description' "$CONFIG_FILE")
 OWNER="nenes25"
 
-echo -e "${GREEN}Configuration chargée:${NC}"
-echo "  - Nom du projet: $PROJECT_NAME"
-echo "  - Propriétaire: $OWNER"
+echo -e "${GREEN}Configuration loaded:${NC}"
+echo "  - Project name: $PROJECT_NAME"
+echo "  - Owner: $OWNER"
 echo ""
 
-# Fonction pour créer le projet
+# Function to create the project
 create_project() {
-    echo -e "${YELLOW}Création du projet GitHub...${NC}"
+    echo -e "${YELLOW}Creating GitHub project...${NC}"
     
-    # Créer le projet (organisation ou utilisateur)
+    # Create project (organization or user)
     PROJECT_ID=$(gh project create \
         --owner "$OWNER" \
         --title "$PROJECT_NAME" \
         --format json | jq -r '.id')
     
     if [ -z "$PROJECT_ID" ] || [ "$PROJECT_ID" == "null" ]; then
-        echo -e "${RED}Erreur: Impossible de créer le projet${NC}"
+        echo -e "${RED}Error: Unable to create project${NC}"
         exit 1
     fi
     
-    echo -e "${GREEN}✓ Projet créé avec succès (ID: $PROJECT_ID)${NC}"
+    echo -e "${GREEN}✓ Project created successfully (ID: $PROJECT_ID)${NC}"
     echo "$PROJECT_ID"
 }
 
-# Fonction pour créer les labels dans tous les repos
+# Function to create labels in all repos
 create_labels() {
-    echo -e "\n${YELLOW}Création des labels dans les dépôts...${NC}"
+    echo -e "\n${YELLOW}Creating labels in repositories...${NC}"
     
-    # Récupérer la liste des dépôts
+    # Get list of repositories
     REPOS=$(jq -r '.repositories[] | "\(.owner)/\(.name)"' "$CONFIG_FILE")
     
-    # Types de labels
+    # Label types
     for label_type in priority type compatibility workflow; do
-        echo -e "\n${YELLOW}Création des labels de type: $label_type${NC}"
+        echo -e "\n${YELLOW}Creating labels of type: $label_type${NC}"
         
-        # Lire les labels de ce type
+        # Read labels of this type
         LABELS=$(jq -c ".labels.$label_type[]" "$CONFIG_FILE")
         
         while IFS= read -r label; do
@@ -89,34 +89,34 @@ create_labels() {
             LABEL_COLOR=$(echo "$label" | jq -r '.color')
             LABEL_DESC=$(echo "$label" | jq -r '.description')
             
-            echo "  - Création du label: $LABEL_NAME"
+            echo "  - Creating label: $LABEL_NAME"
             
-            # Créer le label dans chaque repo
+            # Create label in each repo
             while IFS= read -r repo; do
-                # Vérifier si le label existe déjà
+                # Check if label already exists
                 if gh label list --repo "$repo" --search "$LABEL_NAME" --limit 1 | grep -q "$LABEL_NAME"; then
-                    echo "    → Label '$LABEL_NAME' existe déjà dans $repo"
+                    echo "    → Label '$LABEL_NAME' already exists in $repo"
                 else
                     gh label create "$LABEL_NAME" \
                         --repo "$repo" \
                         --color "$LABEL_COLOR" \
-                        --description "$LABEL_DESC" 2>/dev/null || echo "    → Échec création dans $repo"
+                        --description "$LABEL_DESC" 2>/dev/null || echo "    → Failed to create in $repo"
                 fi
             done <<< "$REPOS"
             
         done <<< "$LABELS"
     done
     
-    echo -e "${GREEN}✓ Labels créés${NC}"
+    echo -e "${GREEN}✓ Labels created${NC}"
 }
 
-# Fonction pour ajouter les issues au projet
+# Function to add issues to the project
 add_issues_to_project() {
     local project_id=$1
     
-    echo -e "\n${YELLOW}Ajout des issues au projet...${NC}"
+    echo -e "\n${YELLOW}Adding issues to project...${NC}"
     
-    # Lire les repositories et leurs issues
+    # Read repositories and their issues
     REPO_COUNT=$(jq '.repositories | length' "$CONFIG_FILE")
     
     for ((i=0; i<$REPO_COUNT; i++)); do
@@ -124,97 +124,97 @@ add_issues_to_project() {
         REPO_NAME=$(jq -r ".repositories[$i].name" "$CONFIG_FILE")
         REPO_FULL="$REPO_OWNER/$REPO_NAME"
         
-        echo -e "\n${YELLOW}Traitement du dépôt: $REPO_FULL${NC}"
+        echo -e "\n${YELLOW}Processing repository: $REPO_FULL${NC}"
         
-        # Lire les numéros d'issues
+        # Read issue numbers
         ISSUES=$(jq -r ".repositories[$i].issues[]" "$CONFIG_FILE" 2>/dev/null || echo "")
         
         if [ -z "$ISSUES" ]; then
-            echo "  → Aucune issue spécifiée pour ce dépôt"
+            echo "  → No issues specified for this repository"
             continue
         fi
         
         while IFS= read -r issue_num; do
             if [ -n "$issue_num" ]; then
-                echo "  - Ajout de l'issue #$issue_num..."
+                echo "  - Adding issue #$issue_num..."
                 
-                # Ajouter l'issue au projet
+                # Add issue to project
                 gh project item-add "$project_id" \
                     --owner "$OWNER" \
                     --url "https://github.com/$REPO_FULL/issues/$issue_num" 2>/dev/null || \
-                    echo "    → Échec ajout issue #$issue_num (peut-être déjà ajoutée ou inexistante)"
+                    echo "    → Failed to add issue #$issue_num (may already be added or non-existent)"
             fi
         done <<< "$ISSUES"
     done
     
-    echo -e "${GREEN}✓ Issues ajoutées au projet${NC}"
+    echo -e "${GREEN}✓ Issues added to project${NC}"
 }
 
-# Afficher les instructions pour les étapes manuelles
+# Display instructions for manual steps
 show_manual_steps() {
     local project_id=$1
     
-    echo -e "\n${YELLOW}=== Étapes manuelles restantes ===${NC}"
+    echo -e "\n${YELLOW}=== Remaining Manual Steps ===${NC}"
     echo ""
-    echo "Le projet a été créé avec succès. Certaines configurations doivent être faites manuellement:"
+    echo "The project was created successfully. Some configurations must be done manually:"
     echo ""
-    echo "1. Configurer les colonnes du tableau Kanban:"
-    echo "   - Aller sur: https://github.com/users/$OWNER/projects"
-    echo "   - Ouvrir le projet '$PROJECT_NAME'"
-    echo "   - Ajouter/renommer les colonnes: Backlog, À faire, En cours, En revue, Terminé"
+    echo "1. Configure Kanban board columns:"
+    echo "   - Go to: https://github.com/users/$OWNER/projects"
+    echo "   - Open project '$PROJECT_NAME'"
+    echo "   - Add/rename columns: Backlog, To Do, In Progress, In Review, Done"
     echo ""
-    echo "2. Ajouter les iterations (sprints):"
-    echo "   - Dans le projet, aller dans Settings → Fields"
-    echo "   - Créer un nouveau field de type 'Iteration'"
-    echo "   - Ajouter les sprints:"
-    echo "     * Mars 2026 (1er mars - durée: 4 semaines)"
-    echo "     * Avril 2026 (1er avril - durée: 4 semaines)"
-    echo "     * Mai 2026 (1er mai - durée: 4 semaines)"
+    echo "2. Add iterations (sprints):"
+    echo "   - In the project, go to Settings → Fields"
+    echo "   - Create a new field of type 'Iteration'"
+    echo "   - Add sprints:"
+    echo "     * March 2026 (March 1st - duration: 4 weeks)"
+    echo "     * April 2026 (April 1st - duration: 4 weeks)"
+    echo "     * May 2026 (May 1st - duration: 4 weeks)"
     echo ""
-    echo "3. Créer les vues personnalisées:"
-    echo "   - Vue Kanban (par colonne/status)"
-    echo "   - Vue Roadmap (timeline, groupé par Iteration)"
-    echo "   - Vue par dépôt (groupé par repository)"
-    echo "   - Vue par priorité (groupé par labels)"
+    echo "3. Create custom views:"
+    echo "   - Kanban view (by column/status)"
+    echo "   - Roadmap view (timeline, grouped by Iteration)"
+    echo "   - By repository view (grouped by repository)"
+    echo "   - By priority view (grouped by labels)"
     echo ""
-    echo "4. Configurer la visibilité du projet (Settings → Visibility)"
+    echo "4. Configure project visibility (Settings → Visibility)"
     echo ""
-    echo -e "${GREEN}Projet créé avec ID: $project_id${NC}"
-    echo -e "${GREEN}URL du projet: https://github.com/users/$OWNER/projects${NC}"
+    echo -e "${GREEN}Project created with ID: $project_id${NC}"
+    echo -e "${GREEN}Project URL: https://github.com/users/$OWNER/projects${NC}"
 }
 
 # Main
 main() {
-    echo -e "${YELLOW}Voulez-vous procéder à la création du projet? (y/n)${NC}"
+    echo -e "${YELLOW}Do you want to proceed with project creation? (y/n)${NC}"
     read -r response
     
     if [[ ! "$response" =~ ^[Yy]$ ]]; then
-        echo "Annulé."
+        echo "Cancelled."
         exit 0
     fi
     
-    # Créer le projet
+    # Create project
     PROJECT_ID=$(create_project)
     
-    # Créer les labels
-    echo -e "\n${YELLOW}Voulez-vous créer les labels dans tous les dépôts? (y/n)${NC}"
+    # Create labels
+    echo -e "\n${YELLOW}Do you want to create labels in all repositories? (y/n)${NC}"
     read -r response
     if [[ "$response" =~ ^[Yy]$ ]]; then
         create_labels
     fi
     
-    # Ajouter les issues
-    echo -e "\n${YELLOW}Voulez-vous ajouter les issues au projet? (y/n)${NC}"
+    # Add issues
+    echo -e "\n${YELLOW}Do you want to add issues to the project? (y/n)${NC}"
     read -r response
     if [[ "$response" =~ ^[Yy]$ ]]; then
         add_issues_to_project "$PROJECT_ID"
     fi
     
-    # Afficher les instructions pour les étapes manuelles
+    # Display instructions for manual steps
     show_manual_steps "$PROJECT_ID"
     
-    echo -e "\n${GREEN}=== Setup terminé avec succès! ===${NC}"
+    echo -e "\n${GREEN}=== Setup completed successfully! ===${NC}"
 }
 
-# Exécuter le script principal
+# Execute main script
 main

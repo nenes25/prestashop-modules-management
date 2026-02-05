@@ -1,25 +1,25 @@
-# PrestaShop Modules Management - Dashboard GitHub
+# PrestaShop Modules Management - GitHub Dashboard
 
-Dépôt dédié à la gestion transverse des 6 modules PrestaShop via un GitHub Project centralisé.
+Dedicated repository for cross-management of 6 PrestaShop modules via a centralized GitHub Project.
 
-## 🎯 Objectif
+## 🎯 Objective
 
-Ce dépôt contient tous les outils et la configuration nécessaires pour créer et gérer un **GitHub Project global** permettant de suivre la planification, la progression, et les sprints mensuels des développements sur les modules PrestaShop.
+This repository contains all the tools and configuration needed to create and manage a **global GitHub Project** to track planning, progress, and monthly sprints for PrestaShop module development.
 
-## 📦 Modules concernés
+## 📦 Covered Modules
 
-1. **[eicaptcha](https://github.com/nenes25/eicaptcha)** - Module de captcha
-2. **[prestashop_console](https://github.com/nenes25/prestashop_console)** - Console CLI pour PrestaShop  
-3. **[hhpsmigrationupgradedb](https://github.com/nenes25/hhpsmigrationupgradedb)** - Migration et upgrade de base de données
-4. **[hhmodulesmanager](https://github.com/nenes25/hhmodulesmanager)** - Gestionnaire de modules
-5. **[cronjobs](https://github.com/nenes25/cronjobs)** - Gestion des tâches planifiées
-6. **[hhmodulescatalogapi](https://github.com/nenes25/hhmodulescatalogapi)** - API catalogue de modules
+1. **[eicaptcha](https://github.com/nenes25/eicaptcha)** - Captcha module
+2. **[prestashop_console](https://github.com/nenes25/prestashop_console)** - CLI Console for PrestaShop  
+3. **[hhpsmigrationupgradedb](https://github.com/nenes25/hhpsmigrationupgradedb)** - Database migration and upgrade
+4. **[hhmodulesmanager](https://github.com/nenes25/hhmodulesmanager)** - Module manager
+5. **[cronjobs](https://github.com/nenes25/cronjobs)** - Scheduled tasks management
+6. **[hhmodulescatalogapi](https://github.com/nenes25/hhmodulescatalogapi)** - Module catalog API
 
-## 🚀 Démarrage rapide
+## 🚀 Quick Start
 
-### Prérequis
+### Prerequisites
 
-1. **GitHub CLI** installé et authentifié
+1. **GitHub CLI** installed and authenticated
    ```bash
    # Installation (Ubuntu/Debian)
    sudo apt install gh
@@ -27,11 +27,11 @@ Ce dépôt contient tous les outils et la configuration nécessaires pour créer
    # Installation (macOS)
    brew install gh
    
-   # Authentification
+   # Authentication
    gh auth login
    ```
 
-2. **jq** pour le traitement JSON
+2. **jq** for JSON processing
    ```bash
    # Ubuntu/Debian
    sudo apt install jq
@@ -40,172 +40,172 @@ Ce dépôt contient tous les outils et la configuration nécessaires pour créer
    brew install jq
    ```
 
-### Installation automatique
+### Automated Installation
 
 ```bash
-# Cloner le dépôt
+# Clone the repository
 git clone https://github.com/nenes25/prestashop-modules-management.git
 cd prestashop-modules-management
 
-# Se placer dans le dossier scripts
+# Go to the scripts folder
 cd scripts
 
-# Exécuter le script de setup
+# Run the setup script
 ./setup-project.sh
 ```
 
-Le script va:
-1. ✅ Créer le projet GitHub "PrestaShop Modules - Roadmap 2026"
-2. ✅ Créer les labels dans tous les dépôts
-3. ✅ Ajouter les issues existantes au projet
-4. ℹ️ Afficher les instructions pour les étapes manuelles restantes
+The script will:
+1. ✅ Create the GitHub project "PrestaShop Modules - Roadmap 2026"
+2. ✅ Create labels in all repositories
+3. ✅ Add existing issues to the project
+4. ℹ️ Display instructions for remaining manual steps
 
-## 📂 Structure du dépôt
+## 📂 Repository Structure
 
 ```
 prestashop-modules-management/
-├── README.md                    # Documentation principale (ce fichier)
+├── README.md                    # Main documentation (this file)
 ├── config/
-│   └── project-config.json     # Configuration du projet (colonnes, labels, repos)
+│   └── project-config.json     # Project configuration (columns, labels, repos)
 ├── scripts/
-│   ├── setup-project.sh        # Script d'installation automatique
-│   └── project-helper.sh       # Script utilitaire pour opérations courantes
+│   ├── setup-project.sh        # Automated installation script
+│   └── project-helper.sh       # Utility script for common operations
 └── docs/
-    ├── QUICKSTART.md           # Guide de démarrage rapide (5 minutes)
-    ├── MANUAL_SETUP.md         # Guide de configuration manuelle détaillée
-    └── VERIFICATION.md         # Rapport de vérification et tests
+    ├── QUICKSTART.md           # Quick start guide (5 minutes)
+    ├── MANUAL_SETUP.md         # Detailed manual configuration guide
+    └── VERIFICATION.md         # Verification and test report
 ```
 
 ## 📚 Documentation
 
-- **[Quick Start](docs/QUICKSTART.md)** - Démarrage rapide en 5 minutes
-- **[Manuel de configuration](docs/MANUAL_SETUP.md)** - Guide détaillé pour setup manuel
-- **[Vérification](docs/VERIFICATION.md)** - Tests et validation
+- **[Quick Start](docs/QUICKSTART.md)** - Quick start in 5 minutes
+- **[Configuration Manual](docs/MANUAL_SETUP.md)** - Detailed guide for manual setup
+- **[Verification](docs/VERIFICATION.md)** - Tests and validation
 
-## 🏷️ Labels créés
+## 🏷️ Created Labels
 
-### Priorité
-- `priority:high` 🔴 - Priorité haute
-- `priority:medium` 🟡 - Priorité moyenne
-- `priority:low` 🟢 - Priorité basse
+### Priority
+- `priority:high` 🔴 - High priority
+- `priority:medium` 🟡 - Medium priority
+- `priority:low` 🟢 - Low priority
 
 ### Type
-- `bug` 🐛 - Bug ou erreur à corriger
-- `enhancement` ✨ - Nouvelle fonctionnalité ou amélioration
+- `bug` 🐛 - Bug or error to fix
+- `enhancement` ✨ - New feature or improvement
 - `documentation` 📚 - Documentation
 - `testing` 🧪 - Tests
 
-### Compatibilité
-- `prestashop-9` 🛒 - Compatible PrestaShop 9.x
-- `php-8.x` 🐘 - Compatible PHP 8.x
+### Compatibility
+- `prestashop-9` 🛒 - Compatible with PrestaShop 9.x
+- `php-8.x` 🐘 - Compatible with PHP 8.x
 
 ### Workflow
-- `need-feedback` 💬 - Besoin de retour/clarification
-- `ready-to-dev` ✅ - Prêt pour le développement
+- `need-feedback` 💬 - Need feedback/clarification
+- `ready-to-dev` ✅ - Ready for development
 
-## 🔧 Commandes utiles
+## 🔧 Useful Commands
 
-### Lister les projets GitHub
+### List GitHub projects
 ```bash
 ./scripts/project-helper.sh list-projects
 ```
 
-### Ajouter une issue au projet
+### Add an issue to the project
 ```bash
 ./scripts/project-helper.sh add-issue nenes25/eicaptcha 331 PROJECT_ID
 ```
 
-### Créer un label dans tous les repos
+### Create a label in all repos
 ```bash
 ./scripts/project-helper.sh bulk-label priority:urgent ff0000 "Urgent"
 ```
 
-### Vérifier les issues d'un repo
+### Check issues in a repo
 ```bash
 ./scripts/project-helper.sh check-issues nenes25/eicaptcha
 ```
 
-### Lister les dépôts configurés
+### List configured repositories
 ```bash
 ./scripts/project-helper.sh list-repos
 ```
 
-### Afficher l'aide
+### Display help
 ```bash
 ./scripts/project-helper.sh help
 ```
 
-## 📝 Configuration manuelle post-installation
+## 📝 Post-Installation Manual Configuration
 
-Certaines configurations doivent être faites manuellement via l'interface GitHub:
+Some configurations must be done manually via the GitHub interface:
 
-### 1. Configuration des colonnes Kanban
+### 1. Kanban Columns Configuration
 
-Aller sur le projet → Configurer les colonnes:
+Go to the project → Configure columns:
 
-- **Backlog** - Issues en attente de priorisation
-- **À faire** - Issues priorisées pour le prochain sprint
-- **En cours** - Issues en cours de développement
-- **En revue** - Pull requests en cours de revue
-- **Terminé** - Issues et PRs terminés
+- **Backlog** - Issues awaiting prioritization
+- **To Do** - Issues prioritized for the next sprint
+- **In Progress** - Issues currently being developed
+- **In Review** - Pull requests under review
+- **Done** - Completed issues and PRs
 
-### 2. Ajout des Iterations (Sprints)
+### 2. Adding Iterations (Sprints)
 
-1. Dans le projet, aller dans **Settings** → **Fields**
-2. Créer un nouveau field de type **Iteration**
-3. Ajouter les sprints:
-   - **Mars 2026** (1er mars 2026, durée: 4 semaines)
-   - **Avril 2026** (1er avril 2026, durée: 4 semaines)
-   - **Mai 2026** (1er mai 2026, durée: 4 semaines)
+1. In the project, go to **Settings** → **Fields**
+2. Create a new field of type **Iteration**
+3. Add the sprints:
+   - **March 2026** (March 1st, 2026, duration: 4 weeks)
+   - **April 2026** (April 1st, 2026, duration: 4 weeks)
+   - **May 2026** (May 1st, 2026, duration: 4 weeks)
 
-### 3. Création des vues personnalisées
+### 3. Creating Custom Views
 
-#### Vue Kanban (par défaut)
+#### Kanban View (default)
 - Type: Board
-- Groupé par: Status/Colonne
+- Grouped by: Status/Column
 
-#### Vue Roadmap
+#### Roadmap View
 - Type: Roadmap
-- Layout: Timeline (3 mois)
-- Groupé par: Iteration
+- Layout: Timeline (3 months)
+- Grouped by: Iteration
 
-#### Vue par dépôt
+#### By Repository View
 - Type: Table
-- Groupé par: Repository
+- Grouped by: Repository
 
-#### Vue par priorité
+#### By Priority View
 - Type: Table
-- Groupé par: Labels (priority:*)
+- Grouped by: Labels (priority:*)
 
-## 🔄 Modification de la configuration
+## 🔄 Modifying the Configuration
 
-Pour modifier la configuration du projet, éditez le fichier `config/project-config.json`:
-- Ajouter/supprimer des dépôts
-- Modifier les issues à inclure
-- Personnaliser les labels
-- Ajuster les iterations
+To modify the project configuration, edit the `config/project-config.json` file:
+- Add/remove repositories
+- Modify issues to include
+- Customize labels
+- Adjust iterations
 
 ## 🤝 Contribution
 
-Pour proposer des améliorations:
-1. Modifier le fichier `config/project-config.json` ou les scripts
-2. Tester vos modifications
-3. Soumettre une Pull Request
+To propose improvements:
+1. Modify the `config/project-config.json` file or scripts
+2. Test your modifications
+3. Submit a Pull Request
 
-## 📚 Ressources
+## 📚 Resources
 
-- [Documentation GitHub Projects](https://docs.github.com/fr/issues/planning-and-tracking-with-projects)
+- [GitHub Projects Documentation](https://docs.github.com/en/issues/planning-and-tracking-with-projects)
 - [GitHub CLI Documentation](https://cli.github.com/manual/)
-- [Guide des labels GitHub](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels)
+- [GitHub Labels Guide](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels)
 
 ## 📞 Support
 
-En cas de problème:
-1. Vérifier que GitHub CLI est authentifié: `gh auth status`
-2. Vérifier les permissions sur les dépôts
-3. Consulter la [documentation](docs/)
-4. Ouvrir une issue dans ce dépôt
+In case of problems:
+1. Verify that GitHub CLI is authenticated: `gh auth status`
+2. Check permissions on repositories
+3. Consult the [documentation](docs/)
+4. Open an issue in this repository
 
 ---
 
-**Ce dépôt facilite la gestion collaborative des modules PrestaShop. N'hésitez pas à adapter la configuration selon vos besoins spécifiques.**
+**This repository facilitates collaborative management of PrestaShop modules. Feel free to adapt the configuration to your specific needs.**
