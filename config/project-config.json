@@ -1,44 +1,44 @@
 {
   "project": {
     "name": "PrestaShop Modules - Roadmap 2026",
-    "description": "Dashboard global pour suivre la planification, la progression, et les sprints mensuels des développements sur les modules PrestaShop",
+    "description": "Global dashboard to track planning, progress, and monthly sprints for PrestaShop module development",
     "visibility": "public"
   },
   "columns": [
     {
       "name": "Backlog",
-      "description": "Issues en attente de priorisation"
+      "description": "Issues awaiting prioritization"
     },
     {
-      "name": "À faire",
-      "description": "Issues priorisées pour le prochain sprint"
+      "name": "To Do",
+      "description": "Issues prioritized for the next sprint"
     },
     {
-      "name": "En cours",
-      "description": "Issues en cours de développement"
+      "name": "In Progress",
+      "description": "Issues currently being developed"
     },
     {
-      "name": "En revue",
-      "description": "Pull requests en cours de revue"
+      "name": "In Review",
+      "description": "Pull requests under review"
     },
     {
-      "name": "Terminé",
-      "description": "Issues et PRs terminés"
+      "name": "Done",
+      "description": "Completed issues and PRs"
     }
   ],
   "iterations": [
     {
-      "title": "Mars 2026",
+      "title": "March 2026",
       "start_date": "2026-03-01",
       "duration": 4
     },
     {
-      "title": "Avril 2026",
+      "title": "April 2026",
       "start_date": "2026-04-01",
       "duration": 4
     },
     {
-      "title": "Mai 2026",
+      "title": "May 2026",
       "start_date": "2026-05-01",
       "duration": 4
     }
@@ -48,29 +48,29 @@
       {
         "name": "priority:high",
         "color": "d73a4a",
-        "description": "Priorité haute"
+        "description": "High priority"
       },
       {
         "name": "priority:medium",
         "color": "fbca04",
-        "description": "Priorité moyenne"
+        "description": "Medium priority"
       },
       {
         "name": "priority:low",
         "color": "0e8a16",
-        "description": "Priorité basse"
+        "description": "Low priority"
       }
     ],
     "type": [
       {
         "name": "bug",
         "color": "d73a4a",
-        "description": "Bug ou erreur à corriger"
+        "description": "Bug or error to fix"
       },
       {
         "name": "enhancement",
         "color": "a2eeef",
-        "description": "Nouvelle fonctionnalité ou amélioration"
+        "description": "New feature or improvement"
       },
       {
         "name": "documentation",
@@ -87,24 +87,24 @@
       {
         "name": "prestashop-9",
         "color": "5319e7",
-        "description": "Compatible PrestaShop 9.x"
+        "description": "Compatible with PrestaShop 9.x"
       },
       {
         "name": "php-8.x",
         "color": "7057ff",
-        "description": "Compatible PHP 8.x"
+        "description": "Compatible with PHP 8.x"
       }
     ],
     "workflow": [
       {
         "name": "need-feedback",
         "color": "d4c5f9",
-        "description": "Besoin de retour/clarification"
+        "description": "Need feedback or clarification"
       },
       {
         "name": "ready-to-dev",
         "color": "c5def5",
-        "description": "Prêt pour le développement"
+        "description": "Ready for development"
       }
     ]
   },
@@ -153,12 +153,12 @@
       "layout": "timeline"
     },
     {
-      "name": "Par dépôt",
+      "name": "By Repository",
       "type": "table",
       "groupBy": "repository"
     },
     {
-      "name": "Par priorité",
+      "name": "By Priority",
       "type": "table",
       "groupBy": "labels"
     }

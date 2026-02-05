@@ -1,13 +1,13 @@
 # Quick Start - GitHub Project Setup
 
-Guide de démarrage rapide pour créer le dashboard PrestaShop Modules en 5 minutes.
+Quick start guide to create the PrestaShop Modules dashboard in 5 minutes.
 
-## 🚀 Option 1: Setup automatique (Recommandé)
+## 🚀 Option 1: Automated Setup (Recommended)
 
-### 1. Prérequis (2 minutes)
+### 1. Prerequisites (2 minutes)
 
 ```bash
-# Installer GitHub CLI si nécessaire
+# Install GitHub CLI if needed
 # Ubuntu/Debian
 sudo apt install gh
 
@@ -17,113 +17,113 @@ brew install gh
 # Windows
 winget install GitHub.cli
 
-# S'authentifier
+# Authenticate
 gh auth login
 ```
 
-### 2. Exécution du script (1 minute)
+### 2. Run the Script (1 minute)
 
 ```bash
-# Cloner le repo si nécessaire
+# Clone the repo if needed
 git clone https://github.com/nenes25/prestashop-modules-management.git
 cd prestashop-modules-management/scripts
 
-# Rendre le script exécutable
+# Make the script executable
 chmod +x setup-project.sh
 
-# Lancer le setup
+# Launch the setup
 ./setup-project.sh
 ```
 
-### 3. Suivre les prompts
+### 3. Follow the Prompts
 
-Le script vous demandera:
-- ✅ Créer le projet? (y/n)
-- ✅ Créer les labels? (y/n)
-- ✅ Ajouter les issues? (y/n)
+The script will ask you:
+- ✅ Create the project? (y/n)
+- ✅ Create the labels? (y/n)
+- ✅ Add the issues? (y/n)
 
-### 4. Configuration manuelle finale (2 minutes)
+### 4. Final Manual Configuration (2 minutes)
 
-Après le script, configurez manuellement:
+After the script, configure manually:
 
-1. **Colonnes Kanban** (via l'interface GitHub)
-   - Renommer les colonnes: Backlog, À faire, En cours, En revue, Terminé
+1. **Kanban Columns** (via GitHub interface)
+   - Rename columns: Backlog, To Do, In Progress, In Review, Done
 
 2. **Iterations/Sprints** (Settings → Fields)
-   - Créer field "Iteration"
-   - Ajouter Mars, Avril, Mai 2026
+   - Create "Iteration" field
+   - Add March, April, May 2026
 
-3. **Vues personnalisées**
+3. **Custom Views**
    - Roadmap (timeline)
-   - Par dépôt
-   - Par priorité
+   - By Repository
+   - By Priority
 
-✅ **Terminé! Votre dashboard est opérationnel.**
-
----
-
-## 📋 Option 2: Setup manuel (10-15 minutes)
-
-Suivez le guide détaillé: [MANUAL_SETUP.md](./MANUAL_SETUP.md)
+✅ **Done! Your dashboard is operational.**
 
 ---
 
-## 🔧 Commandes utiles
+## 📋 Option 2: Manual Setup (10-15 minutes)
 
-### Lister vos projets
+Follow the detailed guide: [MANUAL_SETUP.md](./MANUAL_SETUP.md)
+
+---
+
+## 🔧 Useful Commands
+
+### List your projects
 ```bash
 ./project-helper.sh list-projects
 ```
 
-### Ajouter une issue au projet
+### Add an issue to the project
 ```bash
 ./project-helper.sh add-issue nenes25/eicaptcha 331 PROJECT_ID
 ```
 
-### Créer un label dans tous les repos
+### Create a label in all repos
 ```bash
 ./project-helper.sh bulk-label priority:urgent ff0000 "Urgent"
 ```
 
-### Vérifier les issues d'un repo
+### Check issues in a repo
 ```bash
 ./project-helper.sh check-issues nenes25/eicaptcha
 ```
 
 ---
 
-## 📚 Documentation complète
+## 📚 Complete Documentation
 
-- **README.md** - Vue d'ensemble et installation
-- **MANUAL_SETUP.md** - Guide manuel étape par étape
-- **project-config.json** - Configuration du projet (dans `config/`)
+- **README.md** - Overview and installation
+- **MANUAL_SETUP.md** - Step-by-step manual guide
+- **project-config.json** - Project configuration (in `config/`)
 
 ---
 
-## ⚠️ Dépannage
+## ⚠️ Troubleshooting
 
-### Erreur "gh not found"
-→ Installez GitHub CLI: https://cli.github.com/
+### Error "gh not found"
+→ Install GitHub CLI: https://cli.github.com/
 
-### Erreur "not authenticated"
-→ Exécutez: `gh auth login`
+### Error "not authenticated"
+→ Run: `gh auth login`
 
-### Erreur "jq not found"
-→ Installez jq: `sudo apt install jq` ou `brew install jq`
+### Error "jq not found"
+→ Install jq: `sudo apt install jq` or `brew install jq`
 
 ### Permission denied
-→ Vérifiez les permissions sur les repos avec: `gh repo view REPO --json viewerPermission`
+→ Check repo permissions with: `gh repo view REPO --json viewerPermission`
 
 ---
 
-## ✨ Prochaines étapes
+## ✨ Next Steps
 
-1. Organiser les issues dans les colonnes
-2. Attribuer les sprints (Mars 2026 pour les priorités)
-3. Ajouter les assignees
-4. Créer les vues personnalisées
-5. Inviter les collaborateurs au projet
+1. Organize issues into columns
+2. Assign sprints (March 2026 for priorities)
+3. Add assignees
+4. Create custom views
+5. Invite collaborators to the project
 
 ---
 
-**Besoin d'aide?** Consultez le [README.md](../README.md) ou le [MANUAL_SETUP.md](./MANUAL_SETUP.md)
+**Need help?** Check the [README.md](../README.md) or [MANUAL_SETUP.md](./MANUAL_SETUP.md)

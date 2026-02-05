@@ -1,114 +1,114 @@
-# Guide de configuration manuelle - GitHub Project PrestaShop Modules
+# Manual Configuration Guide - GitHub Project PrestaShop Modules
 
-Ce guide détaille toutes les étapes pour créer manuellement le GitHub Project si vous préférez ne pas utiliser le script automatique.
+This guide details all the steps to manually create the GitHub Project if you prefer not to use the automated script.
 
-## 📋 Table des matières
+## 📋 Table of Contents
 
-1. [Création du projet](#1-création-du-projet)
-2. [Configuration de la structure Kanban](#2-configuration-de-la-structure-kanban)
-3. [Ajout des Iterations (sprints)](#3-ajout-des-iterations-sprints)
-4. [Ajout des issues](#4-ajout-des-issues)
-5. [Création des labels](#5-création-des-labels)
-6. [Configuration des vues personnalisées](#6-configuration-des-vues-personnalisées)
-
----
-
-## 1. Création du projet
-
-### Étapes:
-
-1. Aller sur votre page Projects: https://github.com/nenes25?tab=projects
-2. Cliquer sur **"New project"**
-3. Sélectionner le type **"Board"** (vue tableau Kanban)
-4. Nommer le projet: **"PrestaShop Modules - Roadmap 2026"**
-5. (Optionnel) Ajouter une description:
-   ```
-   Dashboard global pour suivre la planification, la progression, et les sprints mensuels 
-   des développements sur les modules PrestaShop
-   ```
-6. Cliquer sur **"Create project"**
-
-### Résultat attendu:
-✅ Un nouveau projet vide avec une vue Board par défaut
+1. [Creating the Project](#1-creating-the-project)
+2. [Configuring the Kanban Structure](#2-configuring-the-kanban-structure)
+3. [Adding Iterations (sprints)](#3-adding-iterations-sprints)
+4. [Adding Issues](#4-adding-issues)
+5. [Creating Labels](#5-creating-labels)
+6. [Configuring Custom Views](#6-configuring-custom-views)
 
 ---
 
-## 2. Configuration de la structure Kanban
+## 1. Creating the Project
 
-### Étapes:
+### Steps:
 
-1. Dans votre projet nouvellement créé, vous verrez des colonnes par défaut
-2. Renommer/créer les colonnes suivantes (cliquer sur ⋮ → Rename):
+1. Go to your Projects page: https://github.com/nenes25?tab=projects
+2. Click on **"New project"**
+3. Select type **"Board"** (Kanban board view)
+4. Name the project: **"PrestaShop Modules - Roadmap 2026"**
+5. (Optional) Add a description:
+   ```
+   Global dashboard to track planning, progress, and monthly sprints 
+   for PrestaShop module development
+   ```
+6. Click on **"Create project"**
 
-   | Colonne | Description | Ordre |
+### Expected Result:
+✅ A new empty project with a default Board view
+
+---
+
+## 2. Configuring the Kanban Structure
+
+### Steps:
+
+1. In your newly created project, you will see default columns
+2. Rename/create the following columns (click on ⋮ → Rename):
+
+   | Column | Description | Order |
    |---------|-------------|-------|
-   | **Backlog** | Issues en attente de priorisation | 1 |
-   | **À faire** | Issues priorisées pour le prochain sprint | 2 |
-   | **En cours** | Issues en cours de développement | 3 |
-   | **En revue** | Pull requests en cours de revue | 4 |
-   | **Terminé** | Issues et PRs terminés | 5 |
+   | **Backlog** | Issues awaiting prioritization | 1 |
+   | **To Do** | Issues prioritized for the next sprint | 2 |
+   | **In Progress** | Issues currently being developed | 3 |
+   | **In Review** | Pull requests under review | 4 |
+   | **Done** | Completed issues and PRs | 5 |
 
-3. Supprimer les colonnes inutiles par défaut (Todo, In Progress, Done si nécessaire)
+3. Delete unnecessary default columns (Todo, In Progress, Done if necessary)
 
-### Conseils:
-- Utilisez le drag & drop pour réorganiser les colonnes
-- Chaque colonne peut avoir une couleur spécifique (Settings de la colonne)
-
----
-
-## 3. Ajout des Iterations (sprints)
-
-Les iterations permettent de planifier le travail sur des périodes définies (sprints mensuels).
-
-### Étapes:
-
-1. Dans le projet, cliquer sur **Settings** (⚙️) en haut à droite
-2. Aller dans la section **"Fields"**
-3. Cliquer sur **"+ New field"**
-4. Sélectionner le type **"Iteration"**
-5. Nommer le champ: **"Sprint"**
-
-6. Configurer les iterations:
-
-   #### Sprint Mars 2026
-   - **Title**: Mars 2026
-   - **Start date**: 2026-03-01 (1er mars 2026)
-   - **Duration**: 4 weeks
-
-   #### Sprint Avril 2026
-   - **Title**: Avril 2026
-   - **Start date**: 2026-04-01 (1er avril 2026)
-   - **Duration**: 4 weeks
-
-   #### Sprint Mai 2026
-   - **Title**: Mai 2026
-   - **Start date**: 2026-05-01 (1er mai 2026)
-   - **Duration**: 4 weeks
-
-7. Cliquer sur **"Save"**
-
-### Résultat attendu:
-✅ Un champ "Sprint" disponible sur chaque item du projet
-✅ 3 sprints planifiés pour Q2 2026
+### Tips:
+- Use drag & drop to reorganize columns
+- Each column can have a specific color (Column Settings)
 
 ---
 
-## 4. Ajout des issues
+## 3. Adding Iterations (sprints)
 
-### Méthode 1: Ajout manuel via l'interface
+Iterations allow you to plan work over defined periods (monthly sprints).
 
-1. Dans le projet, cliquer sur **"+ Add item"** en bas de n'importe quelle colonne
-2. Sélectionner **"Add item from repository"**
-3. Chercher et sélectionner les issues par numéro
+### Steps:
 
-### Méthode 2: Recherche et ajout groupé
+1. In the project, click on **Settings** (⚙️) in the top right
+2. Go to the **"Fields"** section
+3. Click on **"+ New field"**
+4. Select type **"Iteration"**
+5. Name the field: **"Sprint"**
 
-1. Utiliser la barre de recherche **"+ Add items"**
-2. Filtrer par repository: `repo:nenes25/eicaptcha`
-3. Sélectionner plusieurs issues en cochant les cases
-4. Cliquer sur **"Add selected items"**
+6. Configure the iterations:
 
-### Liste des issues à ajouter:
+   #### Sprint March 2026
+   - **Title**: March 2026
+   - **Start date**: 2026-03-01 (March 1st, 2026)
+   - **Duration**: 4 weeks
+
+   #### Sprint April 2026
+   - **Title**: April 2026
+   - **Start date**: 2026-04-01 (April 1st, 2026)
+   - **Duration**: 4 weeks
+
+   #### Sprint May 2026
+   - **Title**: May 2026
+   - **Start date**: 2026-05-01 (May 1st, 2026)
+   - **Duration**: 4 weeks
+
+7. Click on **"Save"**
+
+### Expected Result:
+✅ A "Sprint" field available on each project item
+✅ 3 sprints planned for Q2 2026
+
+---
+
+## 4. Adding Issues
+
+### Method 1: Manual Addition via Interface
+
+1. In the project, click on **"+ Add item"** at the bottom of any column
+2. Select **"Add item from repository"**
+3. Search and select issues by number
+
+### Method 2: Bulk Search and Add
+
+1. Use the **"+ Add items"** search bar
+2. Filter by repository: `repo:nenes25/eicaptcha`
+3. Select multiple issues by checking the boxes
+4. Click on **"Add selected items"**
+
+### List of Issues to Add:
 
 #### eicaptcha (nenes25/eicaptcha)
 Issues: #331, #329, #328, #320, #319, #318, #314, etc.
@@ -126,156 +126,156 @@ Issues: #22, #20, #16, #14
 Issues: #6, #4, #1
 
 #### cronjobs (nenes25/cronjobs)
-À définir selon les besoins
+To be defined as needed
 
-### Organisation:
-- Placer les issues prioritaires dans **"À faire"**
-- Attribuer le sprint **"Mars 2026"** aux issues à démarrer rapidement
-- Mettre le reste dans **"Backlog"**
-
----
-
-## 5. Création des labels
-
-Les labels doivent être créés dans **chaque dépôt** individuellement.
-
-### Étapes pour chaque dépôt:
-
-1. Aller sur le dépôt (ex: https://github.com/nenes25/eicaptcha)
-2. Cliquer sur **"Issues"** → **"Labels"**
-3. Cliquer sur **"New label"**
-
-### Labels à créer:
-
-#### Catégorie: Priorité
-
-| Nom | Couleur (hex) | Description |
-|-----|---------------|-------------|
-| `priority:high` | `d73a4a` | Priorité haute - À traiter en urgence |
-| `priority:medium` | `fbca04` | Priorité moyenne - À planifier |
-| `priority:low` | `0e8a16` | Priorité basse - Nice to have |
-
-#### Catégorie: Type
-
-| Nom | Couleur (hex) | Description |
-|-----|---------------|-------------|
-| `bug` | `d73a4a` | Bug ou erreur à corriger |
-| `enhancement` | `a2eeef` | Nouvelle fonctionnalité ou amélioration |
-| `documentation` | `0075ca` | Amélioration de la documentation |
-| `testing` | `d876e3` | Tests et qualité du code |
-
-#### Catégorie: Compatibilité
-
-| Nom | Couleur (hex) | Description |
-|-----|---------------|-------------|
-| `prestashop-9` | `5319e7` | Compatible PrestaShop 9.x |
-| `php-8.x` | `7057ff` | Compatible PHP 8.x |
-
-#### Catégorie: Workflow
-
-| Nom | Couleur (hex) | Description |
-|-----|---------------|-------------|
-| `need-feedback` | `d4c5f9` | Besoin de retour ou clarification |
-| `ready-to-dev` | `c5def5` | Spécifications claires, prêt pour dev |
-
-### Astuce:
-Utilisez le script automatique `setup-project.sh` pour créer tous les labels automatiquement dans tous les dépôts!
+### Organization:
+- Place priority issues in **"To Do"**
+- Assign the **"March 2026"** sprint to issues to start quickly
+- Put the rest in **"Backlog"**
 
 ---
 
-## 6. Configuration des vues personnalisées
+## 5. Creating Labels
 
-### Vue 1: Kanban (défaut)
+Labels must be created in **each repository** individually.
 
-1. Cette vue est créée automatiquement
+### Steps for Each Repository:
+
+1. Go to the repository (e.g.: https://github.com/nenes25/eicaptcha)
+2. Click on **"Issues"** → **"Labels"**
+3. Click on **"New label"**
+
+### Labels to Create:
+
+#### Category: Priority
+
+| Name | Color (hex) | Description |
+|-----|---------------|-------------|
+| `priority:high` | `d73a4a` | High priority - Handle urgently |
+| `priority:medium` | `fbca04` | Medium priority - To be planned |
+| `priority:low` | `0e8a16` | Low priority - Nice to have |
+
+#### Category: Type
+
+| Name | Color (hex) | Description |
+|-----|---------------|-------------|
+| `bug` | `d73a4a` | Bug or error to fix |
+| `enhancement` | `a2eeef` | New feature or improvement |
+| `documentation` | `0075ca` | Documentation improvement |
+| `testing` | `d876e3` | Tests and code quality |
+
+#### Category: Compatibility
+
+| Name | Color (hex) | Description |
+|-----|---------------|-------------|
+| `prestashop-9` | `5319e7` | Compatible with PrestaShop 9.x |
+| `php-8.x` | `7057ff` | Compatible with PHP 8.x |
+
+#### Category: Workflow
+
+| Name | Color (hex) | Description |
+|-----|---------------|-------------|
+| `need-feedback` | `d4c5f9` | Need feedback or clarification |
+| `ready-to-dev` | `c5def5` | Clear specifications, ready for dev |
+
+### Tip:
+Use the automated `setup-project.sh` script to create all labels automatically in all repositories!
+
+---
+
+## 6. Configuring Custom Views
+
+### View 1: Kanban (default)
+
+1. This view is created automatically
 2. Configuration:
    - **Layout**: Board
    - **Group by**: Status
-   - Affiche les colonnes: Backlog, À faire, En cours, En revue, Terminé
+   - Displays columns: Backlog, To Do, In Progress, In Review, Done
 
-### Vue 2: Roadmap (Timeline)
+### View 2: Roadmap (Timeline)
 
-1. Cliquer sur la vue actuelle → **"+ New view"**
-2. Nommer: **"Roadmap"**
-3. Choisir layout: **"Roadmap"**
+1. Click on current view → **"+ New view"**
+2. Name: **"Roadmap"**
+3. Choose layout: **"Roadmap"**
 4. Configuration:
    - **Slice by**: Iteration (Sprint)
-   - **Timeline**: 3 mois (Mars - Mai 2026)
-   - **Zoom**: Par semaine
-5. Sauvegarder
+   - **Timeline**: 3 months (March - May 2026)
+   - **Zoom**: By week
+5. Save
 
-### Vue 3: Par dépôt
+### View 3: By Repository
 
-1. Créer une nouvelle vue
-2. Nommer: **"Par dépôt"**
-3. Choisir layout: **"Table"**
+1. Create a new view
+2. Name: **"By Repository"**
+3. Choose layout: **"Table"**
 4. Configuration:
    - **Group by**: Repository
-   - **Sort by**: Priority (descendant)
-   - Colonnes visibles: Title, Status, Sprint, Labels, Assignees
-5. Sauvegarder
+   - **Sort by**: Priority (descending)
+   - Visible columns: Title, Status, Sprint, Labels, Assignees
+5. Save
 
-### Vue 4: Par priorité
+### View 4: By Priority
 
-1. Créer une nouvelle vue
-2. Nommer: **"Par priorité"**
-3. Choisir layout: **"Table"**
+1. Create a new view
+2. Name: **"By Priority"**
+3. Choose layout: **"Table"**
 4. Configuration:
-   - **Group by**: Labels (filtrer sur priority:*)
-   - **Sort by**: Created date (descendant)
-   - Colonnes visibles: Repository, Title, Status, Sprint
-5. Sauvegarder
+   - **Group by**: Labels (filter on priority:*)
+   - **Sort by**: Created date (descending)
+   - Visible columns: Repository, Title, Status, Sprint
+5. Save
 
 ---
 
-## ✅ Checklist finale
+## ✅ Final Checklist
 
-Après avoir suivi ce guide, vous devriez avoir:
+After following this guide, you should have:
 
-- [ ] Un projet GitHub nommé "PrestaShop Modules - Roadmap 2026"
-- [ ] 5 colonnes Kanban configurées
-- [ ] 3 sprints mensuels (Mars, Avril, Mai 2026)
-- [ ] Issues des 6 dépôts ajoutées au projet
-- [ ] Labels créés dans tous les dépôts concernés
-- [ ] 4 vues personnalisées: Kanban, Roadmap, Par dépôt, Par priorité
-- [ ] Issues prioritaires assignées au sprint Mars 2026
+- [ ] A GitHub project named "PrestaShop Modules - Roadmap 2026"
+- [ ] 5 configured Kanban columns
+- [ ] 3 monthly sprints (March, April, May 2026)
+- [ ] Issues from the 6 repositories added to the project
+- [ ] Labels created in all concerned repositories
+- [ ] 4 custom views: Kanban, Roadmap, By Repository, By Priority
+- [ ] Priority issues assigned to the March 2026 sprint
 
 ---
 
-## 🎯 Bonnes pratiques
+## 🎯 Best Practices
 
-### Utilisation quotidienne:
+### Daily Usage:
 
-1. **Déplacer les cartes** entre colonnes selon leur avancement
-2. **Assigner les issues** aux développeurs responsables
-3. **Mettre à jour les sprints** pour planifier le travail
-4. **Ajouter des labels** pour faciliter le tri et les recherches
-5. **Lier les PRs aux issues** pour un suivi automatique
+1. **Move cards** between columns according to their progress
+2. **Assign issues** to responsible developers
+3. **Update sprints** to plan the work
+4. **Add labels** to facilitate sorting and searches
+5. **Link PRs to issues** for automatic tracking
 
-### Workflow recommandé:
+### Recommended Workflow:
 
 ```
-Backlog → À faire → En cours → En revue → Terminé
+Backlog → To Do → In Progress → In Review → Done
     ↓         ↓          ↓          ↓
  Sprint    Sprint    Sprint     Auto
 planning  start    reviewing  close
 ```
 
-### Maintenance hebdomadaire:
+### Weekly Maintenance:
 
-- Revue du Backlog (priorisation)
-- Mise à jour de la Roadmap
-- Déplacement des issues selon avancement
-- Planning du prochain sprint
-
----
-
-## 📞 Besoin d'aide?
-
-- [Documentation GitHub Projects](https://docs.github.com/fr/issues/planning-and-tracking-with-projects)
-- [Guide des iterations](https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-iteration-fields)
-- [Automatisation avec GitHub Actions](https://docs.github.com/en/issues/planning-and-tracking-with-projects/automating-your-project)
+- Review Backlog (prioritization)
+- Update Roadmap
+- Move issues according to progress
+- Plan the next sprint
 
 ---
 
-**Bon courage dans la mise en place de votre dashboard! 🚀**
+## 📞 Need Help?
+
+- [GitHub Projects Documentation](https://docs.github.com/en/issues/planning-and-tracking-with-projects)
+- [Iterations Guide](https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-iteration-fields)
+- [Automation with GitHub Actions](https://docs.github.com/en/issues/planning-and-tracking-with-projects/automating-your-project)
+
+---
+
+**Good luck setting up your dashboard! 🚀**
