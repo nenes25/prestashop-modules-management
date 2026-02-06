@@ -56,18 +56,21 @@ create_project() {
     echo -e "${YELLOW}Creating GitHub project...${NC}"
     
     # Create project (organization or user)
-    PROJECT_ID=$(gh project create \
+    PROJECT_OUTPUT=$(gh project create \
         --owner "$OWNER" \
         --title "$PROJECT_NAME" \
-        --format json | jq -r '.id')
+        --format json)
     
-    if [ -z "$PROJECT_ID" ] || [ "$PROJECT_ID" == "null" ]; then
+    PROJECT_ID=$(echo "$PROJECT_OUTPUT" | jq -r '.id')
+    PROJECT_NUMBER=$(echo "$PROJECT_OUTPUT" | jq -r '.number')
+    
+    if [ -z "$PROJECT_NUMBER" ] || [ "$PROJECT_NUMBER" == "null" ]; then
         echo -e "${RED}Error: Unable to create project${NC}"
         exit 1
     fi
     
-    echo -e "${GREEN}✓ Project created successfully (ID: $PROJECT_ID)${NC}"
-    echo "$PROJECT_ID"
+    echo -e "${GREEN}✓ Project created successfully (Number: $PROJECT_NUMBER, ID: $PROJECT_ID)${NC}"
+    echo "$PROJECT_NUMBER"
 }
 
 # Function to create labels in all repos
@@ -112,7 +115,7 @@ create_labels() {
 
 # Function to add issues to the project
 add_issues_to_project() {
-    local project_id=$1
+    local project_number=$1
     
     echo -e "\n${YELLOW}Adding issues to project...${NC}"
     
@@ -139,7 +142,7 @@ add_issues_to_project() {
                 echo "  - Adding issue #$issue_num..."
                 
                 # Add issue to project
-                gh project item-add "$project_id" \
+                gh project item-add "$project_number" \
                     --owner "$OWNER" \
                     --url "https://github.com/$REPO_FULL/issues/$issue_num" 2>/dev/null || \
                     echo "    → Failed to add issue #$issue_num (may already be added or non-existent)"
@@ -152,7 +155,7 @@ add_issues_to_project() {
 
 # Display instructions for manual steps
 show_manual_steps() {
-    local project_id=$1
+    local project_number=$1
     
     echo -e "\n${YELLOW}=== Remaining Manual Steps ===${NC}"
     echo ""
@@ -179,7 +182,7 @@ show_manual_steps() {
     echo ""
     echo "4. Configure project visibility (Settings → Visibility)"
     echo ""
-    echo -e "${GREEN}Project created with ID: $project_id${NC}"
+    echo -e "${GREEN}Project number: $project_number${NC}"
     echo -e "${GREEN}Project URL: https://github.com/users/$OWNER/projects${NC}"
 }
 
@@ -194,7 +197,7 @@ main() {
     fi
     
     # Create project
-    PROJECT_ID=$(create_project)
+    PROJECT_NUMBER=$(create_project)
     
     # Create labels
     echo -e "\n${YELLOW}Do you want to create labels in all repositories? (y/n)${NC}"
@@ -207,11 +210,11 @@ main() {
     echo -e "\n${YELLOW}Do you want to add issues to the project? (y/n)${NC}"
     read -r response
     if [[ "$response" =~ ^[Yy]$ ]]; then
-        add_issues_to_project "$PROJECT_ID"
+        add_issues_to_project "$PROJECT_NUMBER"
     fi
     
     # Display instructions for manual steps
-    show_manual_steps "$PROJECT_ID"
+    show_manual_steps "$PROJECT_NUMBER"
     
     echo -e "\n${GREEN}=== Setup completed successfully! ===${NC}"
 }
