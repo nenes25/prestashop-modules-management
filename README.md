@@ -105,6 +105,11 @@ prestashop-modules-management/
 
 ## 🔧 Useful Commands
 
+### Add issues to existing project (catch-up script)
+```bash
+./scripts/add-issues-to-project.sh
+```
+
 ### List GitHub projects
 ```bash
 ./scripts/project-helper.sh list-projects
